@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.lucasefr.cursomc.domain.Categoria;
+import com.lucasefr.cursomc.dto.CategoriaDTO;
 import com.lucasefr.cursomc.repositories.CategoriaRepository;
 import com.lucasefr.cursomc.services.exceptions.DataIntegrityException;
 import com.lucasefr.cursomc.services.exceptions.ObjectNotFoundException;
@@ -65,5 +66,9 @@ public class CategoriaService {
 		return repo.findAll(pageRequest);
 	}
 	
+	//Metodo auxiliar para validação de dados
+	public Categoria fromDTO(CategoriaDTO objDto) {
+		return new Categoria(objDto.getId(), objDto.getNome());
+	}
 
 }
